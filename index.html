@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>L'Oréal Smart Routine & Product Advisor</title>
+
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -17,16 +18,37 @@
 
   <body>
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <img
+          src="img/loreal-logo.png"
+          alt="L'Oréal logo"
+          class="brand-logo"
+        />
+        <h1 class="site-title">Smart Routine & Product Advisor</h1>
+        <p class="site-subtitle">
+          Ask about skincare, makeup, haircare, fragrance, and personalized
+          L’Oréal routines.
+        </p>
       </header>
 
-      <!------- Chat Area ------->
       <main>
         <section class="chatbox">
+          <div class="latest-question-card">
+            <p class="latest-question-label">Latest Question</p>
+            <p id="latestQuestion" class="latest-question-text">
+              Ask me about any L’Oréal product or routine...
+            </p>
+          </div>
+
           <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+            <div class="message-row ai">
+              <div class="message-bubble ai-bubble">
+                Hi! I’m your L’Oréal beauty advisor. I can help with skincare,
+                makeup, haircare, fragrance, routines, and product
+                recommendations. Tell me your beauty goal, skin concern, hair
+                type, or product interest.
+              </div>
+            </div>
           </div>
 
           <form id="chatForm" class="chat-form">
@@ -35,7 +57,7 @@
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask me about any L’Oréal product or routine..."
               autocomplete="off"
               required
             />
@@ -47,11 +69,9 @@
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
         <nav>
-          <!-- These URLs are placeholders -->
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>
           <a href="#">Contact</a>
@@ -59,8 +79,6 @@
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
