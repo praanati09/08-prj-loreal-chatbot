@@ -4,7 +4,6 @@ const chatWindow = document.getElementById("chatWindow");
 const latestQuestion = document.getElementById("latestQuestion");
 const sendBtn = document.getElementById("sendBtn");
 
-/* Use your real Cloudflare Worker URL here */
 const WORKER_URL = "https://loreal-chatbot.ppurohi5.workers.dev";
 
 const conversationHistory = [
@@ -29,8 +28,8 @@ Rules:
 - Ask follow-up questions when useful, such as skin type, skin concern, hair type, routine goals, or preferences.
 - When recommending products, keep recommendations focused on L'Oréal products or L'Oréal-owned beauty brands.
 - Do not provide medical diagnosis. If the user describes a serious skin issue or reaction, suggest consulting a dermatologist.
-`
-  }
+`,
+  },
 ];
 
 function addMessage(role, text) {
@@ -80,7 +79,7 @@ chatForm.addEventListener("submit", async (e) => {
 
   conversationHistory.push({
     role: "user",
-    content: message
+    content: message,
   });
 
   userInput.value = "";
@@ -93,11 +92,11 @@ chatForm.addEventListener("submit", async (e) => {
     const response = await fetch(WORKER_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        messages: conversationHistory
-      })
+        messages: conversationHistory,
+      }),
     });
 
     const data = await response.json();
@@ -120,14 +119,11 @@ chatForm.addEventListener("submit", async (e) => {
 
     conversationHistory.push({
       role: "assistant",
-      content: assistantReply
+      content: assistantReply,
     });
   } catch (error) {
     removeTypingMessage();
-    addMessage(
-      "assistant",
-      `Connection error: ${error.message}`
-    );
+    addMessage("assistant", `Connection error: ${error.message}`);
     console.error("Chatbot fetch failed:", error);
   } finally {
     userInput.disabled = false;
